@@ -5,6 +5,7 @@ class Screen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -13,9 +14,46 @@ class Screen1 extends StatelessWidget {
         backgroundColor: Colors.green,
       ),
       body: Column(
-        crossAxisAlignment: .center,
         children: [
-          Container(child: Image.asset("assets/images/ironman_image.png", width: 200, height: 200,)),
+          Expanded(
+            child: Center(
+              child: Image.asset(
+                'assets/images/ironman_image.png',
+                width: 200,
+                height: 200,
+              ),
+            ),
+          ),
+          Container(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: .center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 200,
+                      right: 200,
+                      bottom: 10,
+                    ),
+                    child: TextFormField(
+                      decoration: const InputDecoration(hintText: 'Username'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 200,
+                      right: 200,
+                      bottom: 20,
+                    ),
+                    child: TextFormField(
+                      decoration: const InputDecoration(hintText: 'Password'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
